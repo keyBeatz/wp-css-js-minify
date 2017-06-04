@@ -23,7 +23,7 @@ abstract class AdminBase extends FileBase
     }
 
 	private function initFilters() {
-		add_action( 'admin_enqueue_scripts', array( $this, 'cssJsLoader' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'cssJsLoader' ), 9999 );
 	}
 
 	public function cssJsLoader() {
@@ -38,7 +38,7 @@ abstract class AdminBase extends FileBase
 		wp_enqueue_script( 'jquery-ui-tooltip' );
 		wp_enqueue_script( 'jquery-ui-sortable' );
 		wp_enqueue_script( 'jquery-ui-tabs' );
-		wp_enqueue_script( 'cjm-admin-minify', $this->getPluginUrl() . '/assets/js/admin-minify.js', array(), false, true );
+		wp_enqueue_script( 'cjm-admin-minify', $this->getPluginUrl() . '/assets/js/admin-minify.js' );
 		//wp_enqueue_script( 'cjm-jquery-ui-theme', $this->getPluginUrl() . '/assets/jquery-ui/jquery-ui.theme.min.js' );
 
 		$translation_array = array(

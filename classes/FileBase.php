@@ -29,14 +29,14 @@ abstract class FileBase
 		$this->cssLog       = get_option( 'cjm_css_log' ) ?: array();
 		$this->jsLog        = get_option( 'cjm_js_log' ) ?: array();
 
-		$this->cssOn        = Plugin::getPublic( "isCssOn" );
-		$this->jsOn         = Plugin::getPublic( "isJsOn" );
-		$this->defaultPriority = Plugin::getPublic( "defaultPriority" );
-		$this->cacheDir     = Plugin::getPublic( "cacheDir" );
-		$this->cacheUrl     = Plugin::getPublic( "cacheUrl" );
-		$this->pluginDir    = Plugin::getPublic( "pluginDir" );
-		$this->pluginUrl    = Plugin::getPublic( "pluginUrl" );
-		$this->libsDir      = Plugin::getPublic( "libsDir" );
+		$this->cssOn        = Plugin::getSetting( "isCssOn" );
+		$this->jsOn         = Plugin::getSetting( "isJsOn" );
+		$this->defaultPriority = Plugin::getSetting( "defaultPriority" );
+		$this->cacheDir     = Plugin::getSetting( "cacheDir" );
+		$this->cacheUrl     = Plugin::getSetting( "cacheUrl" );
+		$this->pluginDir    = Plugin::getSetting( "pluginDir" );
+		$this->pluginUrl    = Plugin::getSetting( "pluginUrl" );
+		$this->libsDir      = Plugin::getSetting( "libsDir" );
 	}
 
 	/**

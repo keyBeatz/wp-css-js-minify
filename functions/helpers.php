@@ -13,7 +13,7 @@ function cjm_img( $name, $size = '16', $src_only = false ) {
 		return '';
 
 	// build src
-	$src = \CJM\Plugin::getPublic( "pluginUrl" ) . "/assets/img/" . $name;
+	$src = \CJM\Plugin::getSetting( "pluginUrl" ) . "/assets/img/" . $name;
 
 	// size in name
 	if( !empty( $size ) )
@@ -38,7 +38,7 @@ function cjm_img( $name, $size = '16', $src_only = false ) {
  * @return string
  */
 function cjm_ajax_loader( $name = "gears", $size = 40, $file_type = "svg", $display = false, $src_only = false ) {
-	$src = \CJM\Plugin::getPublic( "pluginUrl" ) . "/assets/img/" . $name . "." . $file_type;
+	$src = \CJM\Plugin::getSetting( "pluginUrl" ) . "/assets/img/" . $name . "." . $file_type;
 
 	if( $src_only )
 		return $src;

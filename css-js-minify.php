@@ -2,6 +2,8 @@
 /*
 Plugin Name: CSS & JS Minify
 Description: Friendly way to define custom blocks of style and javascript files with defer/async CSS & JS loading support.
+Text Domain: css-js-minify
+Domain Path: /languages
 Version: 0.9
 Author: keyBeatz
 */
@@ -10,65 +12,34 @@ namespace CJM;
 
 defined( 'ABSPATH' ) || exit();
 
-
-/**
- * Autoload class files
- */
-function autoload( $cls ) {
-	$cls = ltrim( $cls, '\\' );
-	if( strpos( $cls, __NAMESPACE__ ) !== 0 )
-		return;
-
-	$cls = str_replace( __NAMESPACE__, '', $cls );
-
-	if( empty( $cls ) )
-		return;
-
-	$path = ABSPATH . "wp-content/plugins/css-js-minify/classes" . str_replace('\\', DIRECTORY_SEPARATOR, $cls) . '.php';
-	require_once( $path );
-}
-spl_autoload_register(__NAMESPACE__ . '\\autoload');
-
+require_once 'classes/autoload.php';
 
 class Plugin extends Settings
 {
 
-	private $plugin_dir;
+	function __construct() {
+		// start the plugin with defined settings
+		$this->defineSettings();
+		$this->bootstrap();
+	}
 
 	/**
 	 * Initialize plugin
 	 */
 	public static function init() {
-	  $class = __CLASS__;
-	  new $class;
-	}
-
-	function __construct() {
-		$this->defineSettings();
-
-		// set vars
-		$this->plugin_dir = plugin_dir_path( __FILE__ );
-
-		// bootstrap plugin files
-		$this->bootstrap();
-		// inicializuj administrační rozhraní
-		if( is_admin() ) $this->loadAdmin();
-		// inicializuj identifikátor souborů (funguje pouze na frontendu)
-		if( !is_admin() && !cjm_is_login() ) $this->identifyFiles();
-
-		if( ( static::getPublic( "isCssOn" ) || static::getPublic( "isJsOn" ) ) && ( !is_admin() && !cjm_is_login() ) )
-			add_action( 'template_redirect', array( "CJM\Plugin", 'loadFileRegistrar' ) );
+		$class = __CLASS__;
+		new $class;
 	}
 
 	private function defineSettings() {
 
 		/** Folder paths & urls */
 
-		static::setPublic( "cacheDir", ABSPATH . "wp-content/uploads/css-js-minify/" );
-		static::setPublic( "cacheUrl", site_url( 'wp-content/uploads/css-js-minify/' ) );
-		static::setPublic( "pluginDir", plugin_dir_path( __FILE__ ) );
-		static::setPublic( "pluginUrl", plugins_url( 'css-js-minify' ) );
-		static::setPublic( "libsDir", static::getPublic( "pluginDir" ) . "libs/" );
+		static::addSetting( "cacheDir", ABSPATH . "wp-content/uploads/css-js-minify/" );
+		static::addSetting( "cacheUrl", site_url( 'wp-content/uploads/css-js-minify/' ) );
+		static::addSetting( "pluginDir", plugin_dir_path( __FILE__ ) );
+		static::addSetting( "pluginUrl", plugins_url( 'css-js-minify' ) );
+		static::addSetting( "libsDir", static::getSetting( "pluginDir" ) . "libs/" );
 
 		/** Minify settings */
 
@@ -76,14 +47,14 @@ class Plugin extends Settings
 		 *	Turn off/on CSS & JS optimization
 		 *	@var	bool
 		 */
-		static::setPublic( "isCssOn", (bool) get_option( 'cjm_is_css_on' ) );
-		static::setPublic( "isJsOn", (bool) get_option( 'cjm_is_js_on' ) );
+		static::addSetting( "isCssOn", (bool) get_option( 'cjm_is_css_on' ) );
+		static::addSetting( "isJsOn", (bool) get_option( 'cjm_is_js_on' ) );
 
 		/**
 		 *  If priority of file block was not set this is default
 		 *  @var int
 		 */
-		static::setPublic( "defaultPriority", 10 );
+		static::addSetting( "defaultPriority", 10 );
 
 	}
 
@@ -91,21 +62,29 @@ class Plugin extends Settings
 		new FileRegistrar();
 	}
 
-	public function identifyFiles() {
+	private function identifyFiles() {
 		new FileIdentifier();
-	}
-
-	public function loadAdmin() {
-		// admin ajax
-		require_once( $this->plugin_dir . "functions/ajax/AjaxHandler.php" );
-		// init admin page
-		new \CJM\Admin\Minify;
 	}
 
 	private function bootstrap() {
 		// functions files
-		require_once( $this->plugin_dir . "functions/filters.php" );
-		require_once( $this->plugin_dir . "functions/helpers.php" );
+		require_once( static::getSetting( "pluginDir" ) . "functions/filters.php" );
+		require_once( static::getSetting( "pluginDir" ) . "functions/helpers.php" );
+
+		// initialize admin interface
+		if( is_admin() ) $this->loadAdmin();
+		// initialize file identifier (works only on frontend)
+		if( !is_admin() && !cjm_is_login() ) $this->identifyFiles();
+		// initialize file registrar (handler which deregisters former and registers minified files)
+		if( ( static::getSetting( "isCssOn" ) || static::getSetting( "isJsOn" ) ) && ( !is_admin() && !cjm_is_login() ) )
+			add_action( 'template_redirect', array( "CJM\Plugin", 'loadFileRegistrar' ) );
+	}
+
+	private function loadAdmin() {
+		// admin ajax
+		require_once( static::getSetting( "pluginDir" ) . "functions/ajax/AjaxHandler.php" );
+		// init admin page
+		new \CJM\Admin\Minify;
 	}
 
 	public static function install() {

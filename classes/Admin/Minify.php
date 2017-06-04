@@ -18,14 +18,13 @@ class Minify extends AdminBase
    }
 
 	public function menu() {
-		add_menu_page(
-			'Optimalizace',
-			'Optimalizace',
-			'manage_options',
-			'cjm-settings.php',
-			array( $this, 'render_view' ),
-			'dashicons-performance',
-			6
+		add_submenu_page(
+			'options-general.php',
+			'CSS & JS Minify',
+			'CSS & JS Minify',
+			'administrator',
+			'css-js-minify-settings',
+			array( $this, 'render_view' )
 		);
 	}
 
@@ -33,9 +32,9 @@ class Minify extends AdminBase
 ?>
 
 <div class="wrap">
-	<h2>Nastavení minifikace a spojování souborů CSS & JS</h2>
+	<h2><?php esc_html_e( 'CSS & JS minification & concat settings', 'css-js-minify' ); ?></h2>
 	<div id="cjm_minify" class="cjm">
-		<div id="tabs">
+		<div id="tabs" class="cjm-admin-wrap">
 			<ul>
 				<li><a href="#tab-css">CSS</a></li>
 				<li><a href="#tab-js">JS</a></li>
@@ -139,18 +138,18 @@ class Minify extends AdminBase
 	<nav class="cjm_sortable_header">
 		<ul style="float:left;">
 			<li>
-				<button data-for="move-left" data-toggle="tooltip" title="Posunout doleva"><?php echo cjm_img( 'arrow-left' ); ?></button>
+				<button data-for="move-left" data-toggle="tooltip" title="<?php esc_attr_e( 'Move file block left', 'css-js-minify' ); ?>"><?php echo cjm_img( 'arrow-left' ); ?></button>
 			</li>
 			<li>
-				<button data-for="move-right" data-toggle="tooltip" title="Posunout doprava"><?php echo cjm_img( 'arrow-right' ); ?></button>
+				<button data-for="move-right" data-toggle="tooltip" title="<?php esc_attr_e( 'Move file block right', 'css-js-minify' ); ?>"><?php echo cjm_img( 'arrow-right' ); ?></button>
 			</li>
 		</ul>
 		<ul style="float:right;">
 			<li>
-				<button data-for="settings" data-toggle="tooltip" title="Zobrazit nastavení"><?php echo cjm_img( 'settings' ); ?></button>
+				<button data-for="settings" data-toggle="tooltip" title="<?php esc_attr_e( 'Show file block settings', 'css-js-minify' ); ?>"><?php echo cjm_img( 'settings' ); ?></button>
 			</li>
 			<li>
-				<button data-for="delete" data-toggle="tooltip" title="Smazat blok"><?php echo cjm_img( 'delete' ); ?></button>
+				<button data-for="delete" data-toggle="tooltip" title="<?php esc_attr_e( 'Remove file block', 'css-js-minify' ); ?>"><?php echo cjm_img( 'delete' ); ?></button>
 			</li>
 		</ul>
 	</nav>
@@ -192,14 +191,14 @@ class Minify extends AdminBase
 		<nav class="cjm_sortable_header">
 			<ul>
 				<li>
-					<button data-for="close-settings" data-toggle="tooltip" title="Skrýt nastavení"><?php echo cjm_img( 'cancel' ); ?></button>
+					<button data-for="close-settings" data-toggle="tooltip" title="<?php esc_attr_e( 'Hide settings', 'css-js-minify' ); ?>"><?php echo cjm_img( 'cancel' ); ?></button>
 				</li>
 			</ul>
 		</nav>
 		<ul>
 		<?php if( $mode == 'css' ) : ?>
 			<li>
-				<label for="<?php echo esc_attr( "cjm_css_media_{$key}" ); ?>">Media</label>
+				<label for="<?php echo esc_attr( "cjm_css_media_{$key}" ); ?>"><?php esc_html_e( 'Media', 'css-js-minify' ); ?></label>
 				<select id="<?php echo esc_attr( "cjm_css_media_{$key}" ); ?>" for="<?php echo esc_attr( "cjm_css_media_{$key}" ); ?>" class="cjm_css_media">
 					<?php
 						$available_media = array( "all", "print", "screen", "speech", "aural", "braille", "handheld", "projection", "tty", "tv" );
@@ -210,32 +209,32 @@ class Minify extends AdminBase
 				</select>
 			</li>
 			<li>
-				<label for="<?php echo esc_attr( "cjm_css_async_{$key}" ); ?>">Načítat asynchronně</label>
+				<label for="<?php echo esc_attr( "cjm_css_async_{$key}" ); ?>"><?php esc_html_e( 'Load asynchronously', 'css-js-minify' ); ?></label>
 				<input type="checkbox" id="<?php echo esc_attr( "cjm_css_async_{$key}" ); ?>" name="<?php echo esc_attr( "cjm_css_async_{$key}" ); ?>" class="cjm_css_async" <?php echo $file['async'] === 'async' ? 'checked="checked"' : ""; ?>>
 			</li>
 			<li>
-				<label for="<?php echo esc_attr( "cjm_css_priority_{$key}" ); ?>">Priorita</label>
+				<label for="<?php echo esc_attr( "cjm_css_priority_{$key}" ); ?>"><?php esc_html_e( 'Priority', 'css-js-minify' ); ?></label>
 				<input type="number" id="<?php echo esc_attr( "cjm_css_priority_{$key}" ); ?>" name="<?php echo esc_attr( "cjm_css_priority_{$key}" ); ?>" value="<?php echo esc_attr( !empty( $file['priority'] ) && is_numeric( $file['priority'] ) ? $file['priority'] : $this->getDefaultPriority() ); ?>" class="cjm_css_priority" min="1" max="99999">
 			</li>
 		<?php elseif( $mode == 'js' ) : ?>
 			<li>
-				<label for="<?php echo esc_attr( "cjm_in_footer_{$key}" ); ?>">V patičce</label>
+				<label for="<?php echo esc_attr( "cjm_in_footer_{$key}" ); ?>"><?php esc_html_e( 'In footer', 'css-js-minify' ); ?></label>
 				<input type="checkbox" id="<?php echo esc_attr( "cjm_in_footer_{$key}" ); ?>" name="<?php echo esc_attr( "cjm_in_footer_{$key}" ); ?>" class="cjm_js_in_footer" <?php echo $file['in_footer'] === true ? 'checked="checked"' : ""; ?>>
 			</li>
 			<li>
-				<label for="<?php echo esc_attr( "cjm_js_async_{$key}" ); ?>">Načítat asynchronně</label>
+				<label for="<?php echo esc_attr( "cjm_js_async_{$key}" ); ?>"><?php esc_html_e( 'Load asynchronously', 'css-js-minify' ); ?></label>
 				<select id="async <?php echo esc_attr( "cjm_js_async_{$key}" ); ?>" name="<?php echo esc_attr( "cjm_js_async_{$key}" ); ?>" class="cjm_js_async" >
 					<?php
 						$available_async = array( "async", "defer" );
 					?>
-					<option value="false" <?php echo ( empty( $file['async'] ) ) ? 'selected' : ''; ?>>klasicky</option>
+					<option value="false" <?php echo ( empty( $file['async'] ) ) ? 'selected' : ''; ?>><?php esc_html_e( 'Default', 'css-js-minify' ); ?></option>
 					<?php foreach( $available_async as $val ) : ?>
 						<option value="<?php echo $val; ?>" <?php echo $val == $file['async'] ? 'selected' : ''; ?>><?php echo $val; ?></option>
 					<?php endforeach; ?>
 				</select>
 			</li>
 			<li>
-				<label for="<?php echo esc_attr( "cjm_js_priority_{$key}" ); ?>">Priorita</label>
+				<label for="<?php echo esc_attr( "cjm_js_priority_{$key}" ); ?>"><?php esc_html_e( 'Priority', 'css-js-minify' ); ?></label>
 				<input type="number" id="<?php echo esc_attr( "cjm_js_priority_{$key}" ); ?>" name="<?php echo esc_attr( "cjm_js_priority_{$key}" ); ?>" value="<?php echo esc_attr( !empty( $file['priority'] ) && is_numeric( $file['priority'] ) ? $file['priority'] : $this->getDefaultPriority() ); ?>" class="cjm_js_priority" min="1" max="99999">
 			</li>
 		<?php endif; ?>
@@ -293,12 +292,12 @@ class Minify extends AdminBase
 			<div class="sMid">
 				<?php if( !empty( $registered{$handle}->args ) && $mode == 'css' ) : ?>
 					<span class="cjm_bracket <?php echo $mode == 'css' ? 'media' : ( $mode == 'js' ? 'in_footer' : '' ); ?>">
-						<?php echo $mode == 'css' ? $registered{$handle}->args : ( $mode == 'js' ? 'V patičce' : '' ); ?>
+						<?php echo $mode == 'css' ? $registered{$handle}->args : ( $mode == 'js' ? esc_html__( 'In footer', 'css-js-minify' ) : '' ); ?>
 					</span>
 				<?php endif; ?>
 				<?php if( !empty( $registered{$handle}->in_footer ) ) : ?>
 					<span class="cjm_bracket in_footer">
-						V patičce
+						<?php esc_html_e( 'In footer', 'css-js-minify' ); ?>
 					</span>
 				<?php endif; ?>
 				<?php if( !empty( $registered{$handle}->ver ) ) : ?>
@@ -308,12 +307,12 @@ class Minify extends AdminBase
 			<div class="sBot sSettings" style="display:none;">
 				<ul>
 					<li class="url">
-						Url:
+						<?php esc_html_e( 'Url', 'css-js-minify' ); ?>:
 						<?php echo cjm_strip_site_from_url( $registered{$handle}->src, 'wp-content' ); ?>
 					</li>
 					<li class="deps">
 						<?php if( !empty( $registered{$handle}->deps ) ) : ?>
-							Závislosti:
+                            <?php esc_html_e( 'Dependencies', 'css-js-minify' ); ?>:
 							<?php foreach( $registered{$handle}->deps as $dep ) : ?>
 								<span class="cjm_bracket"><?php echo $dep; ?></span>
 							<?php endforeach; ?>
@@ -330,9 +329,14 @@ class Minify extends AdminBase
 	}
 
 	public function blockMessage( $state = 'activated', $hide = false ) {
-		$msg['activated'] 		= "Přetáhněte boxíky sem";
-		$msg['not_activated'] 	= 'První je třeba načíst soubory, navštivte prosím <a href="'. esc_url( site_url() ) .'" target="_blank">stránku webu</a>.';
-		$msg['empty'] 			= "Všechny položky byly rozděleny";
+
+		$msg['activated'] 		= esc_html__( 'Move file boxes here', 'css-js-minify' );
+		$msg['not_activated'] 	= sprintf(
+			'%s <a href="'. esc_url( site_url() ) .'" target="_blank">%s</a>.',
+			__( 'First you need to load existing files, please revisit', 'css-js-minify' ),
+			__( 'your webpage', 'css-js-minify' )
+		);
+		$msg['empty'] 			= esc_html__( 'All boxes has been already assigned.', 'css-js-minify' );
 
 		if( isset( $msg[$state] ) ) :
 	?>
@@ -351,21 +355,21 @@ class Minify extends AdminBase
 		<nav class="cjm_file_header">
 			<ul style="float:left;">
 				<li>
-					<button data-for="generate" data-nonce="<?php echo wp_create_nonce( 'generate_minified_files' ); ?>" title="Generovat soubory">
+					<button data-for="generate" data-nonce="<?php echo wp_create_nonce( 'generate_minified_files' ); ?>" title="<?php esc_attr_e( 'Generate files', 'css-js-minify' ); ?>">
 						<?php echo cjm_img( 'floppy', 24 ); ?>
-						Uložit
+                        <?php esc_html_e( 'Save', 'css-js-minify' ); ?>
 					</button>
 				</li>
 				<li>
-					<button data-for="flush" title="Vyčistit soubory">
+					<button data-for="flush" title="<?php esc_attr_e( 'Erase all files', 'css-js-minify' ); ?>">
 						<?php echo cjm_img( 'delete', 24 ); ?>
-						Smazat vše
+                        <?php esc_html_e( 'Delete all', 'css-js-minify' ); ?>
 					</button>
 				</li>
 				<li>
-					<button data-for="guide" title="Zobrazit nápovědu">
+					<button data-for="guide" title="<?php esc_attr_e( 'Show guidance', 'css-js-minify' ); ?>">
 						<?php echo cjm_img( 'info', 24 ); ?>
-						Nápověda
+                        <?php esc_html_e( 'Help', 'css-js-minify' ); ?>
 					</button>
 				</li>
 
@@ -383,7 +387,7 @@ class Minify extends AdminBase
 						else if( $mode == "js" )
 						    $state = $this->isJsOn();
 					?>
-					<label class="cjm switch" data-toggle="tooltip" title="<?php echo esc_attr( "Zapnout/vypnout ({$mode})" ); ?>">
+					<label class="cjm switch" data-toggle="tooltip" title="<?php printf( esc_attr__( 'Turn on/off %s', 'css-js-minify' ), $mode ); ?>">
 						<input class="cjm_main_toggle" data-nonce="<?php echo wp_create_nonce( 'main_toggle' ); ?>" type="checkbox" <?php if( $state === true ) echo 'checked="checked"'; ?>>
 						<div class="slider round"></div>
 					</label>
@@ -399,8 +403,8 @@ class Minify extends AdminBase
 	?>
 	<div class="cjm-sortable-add-block-wrapper">
 		<button class="cjm-sortable-add-block">
-			<img src="<?php echo cjm_img( 'plus', '64', true ); ?>" alt="Přidat blok" title="Kliknutím vytvoříte další blok">
-			Přidat blok
+			<img src="<?php echo cjm_img( 'plus', '64', true ); ?>" alt="<?php esc_attr_e( 'Add file block', 'css-js-minify' ); ?>" title="<?php esc_attr_e( 'Click to add new file block', 'css-js-minify' ); ?>">
+			<?php esc_html_e( 'Add file block', 'css-js-minify' ); ?>
 		</button>
 	</div>
 	<?php
