@@ -171,13 +171,13 @@ class Minify extends AdminBase
 	<div class="cjm_sortable_box">
 		<?php $this->blockControls(); ?>
 		<ul id="<?php echo esc_attr( "cjm_sortable" . $mode . "_" . $key ); ?>" class="cjm_sortable <?php echo esc_attr( $mode . "_sortable" ); ?> created with_message">
-			<?php foreach( $file['files'] as $handle ) : if( isset( $registered{$handle} ) ) : ?>
+            <?php $this->blockMessage( 'activated', true ); ?>
+            <?php foreach( $file['files'] as $handle ) : if( isset( $registered{$handle} ) ) : ?>
 				<?php
 					$priority = array_search( $handle, array_keys( $registered ) );
 					$this->blockItem( $registered, $handle, $mode, ++$priority );
 				?>
 			<?php endif; endforeach; ?>
-			<?php $this->blockMessage( 'activated', true ); ?>
 		</ul>
 		<?php $this->blockSettings( $mode, $file, $key ); ?>
 	</div>
@@ -412,49 +412,159 @@ class Minify extends AdminBase
 
 	public function guideHtml() {
 	?>
-	<div id="cjm_help" title="Nápověda pro minifikátor" style="display:none;">
-		<h2 class="sTitle">Záložky</h2>
-		<p>
-			 Záložky slouží pro oddělení jednotlivých sekcí, z níchž každá se nastavuje zvlášť.
-			 <ul>
-				<li><strong>CSS:</strong> slouží pro sestavovaní minifikovaných souborů pro styly</li>
-				<li><strong>JS:</strong> slouží pro sestavovaní minifikovaných souborů pro skripty</li>
-			 </ul>
-		</p>
-		<h2 class="sTitle">Tlačítka</h2>
-		<p>
-			Tlačítka reprezentují vždy určité akce, které se vážou buďto k dané záložce, nebo bloku.
-			<ul>
-			  <li><strong>Uložit:</strong> vygeneruje minifikované soubory dle naskládaných bloků a jejich boxů</li>
-			  <li><strong>Smazat vše:</strong> smaže všechny bloky dané záložky, ale pro trvalý efekt je třeba ještě uložit</li>
-			  <li><strong>Nápověda:</strong> zobrazí tuto nápovědu</li>
-			  <li><strong>Přepínač:</strong> je umístěný úplně vpravo v hlavičce záložky a slouží pro vypnutí a zapnutí minifikátoru (vždy pro záložku zvlášť, takže lze mít zaplé css zatímco js je vyplé)</li>
-			</ul>
-		</p>
-		<h2 class="sTitle">Bloky</h2>
-		<p>
-			Blok reprezentuje jeden soubor.
-			První blok (oranžový), obsahuje výchozí registrované styly, které jde volně rozřazovat do bloků.
-			Boxy v oranžovém bloku jsou načteny dle svého původního nastavení a nevystupují nijak v minifikátoru.
-			Každý (šedý) blok může obsahovat libovolný počet boxů.
-			Na pořadí bloků záleží, jelikož určují prioritu načítání (lze měnit).
-			Tlačítka bloků mají tyto funkce:
-			<ul>
-			  <li><strong>Šipka vlevo/vpravo:</strong> posouvání bloku určeným směrem, takto můžete vybírat prioritu načítání (první blok vlevo se bude načítat jako první)</li>
-			  <li><strong>Ozubené kolo:</strong> nastavení pro daný blok (většinou se nastavují atributy, pro CSS media a pro JS např. to, jestli se má blok načítat v patičce nebo v hlavičce dokumentu)</li>
-			  <li><strong>Koš:</strong> smaže blok (pro úplné smazání je třeba uložit)</li>
-			</ul>
-		</p>
-		<h2 class="sTitle">Boxy</h2>
-		<p>
-			Box reprezentuje jeden soubor, který byl načtený WordPressem.
-			Ve výchozím stavu jsou načteny všechny vlevo v oranžovém boxu, kde jsou "deaktivované" pro minifikátor a načítají se dle svého původního nastavení.
-			Číslo vedle názvu značí prioritu v originálním načítání, na toto by se měl brát vždy ohled, jelikož soubory na sobě bývají buď závislé nebo se navzájem přepisují.
-			Pod číslem označující prioritu a názvem se nachází štítky s příznaky, pro CSS zelené značí media atribut a pro JS červené značí, jestli se originálně načítají v patičce.
-			Šedý štítek pak znamená verzi souboru.
-			Na pravé straně boxu se nachází šipka, která rozklikne další informace o souboru, které mohou být užitečné při identifikaci či rozhodování kam soubor zařadit.
-			<strong>Pořadí v boxech značí prioritu, ve které budou vkládány do minifikátoru, vždy by se měl při tom dávat důraz na původní číslo priority.</strong>
-		</p>
+	<div id="cjm_help" title="<?php esc_attr_e( 'CSS & JS Minify - guide', 'css-js-minify' ); ?>" style="display:none;">
+
+        <nav class="cjm-help-nav">
+            <ul>
+                <li data-tab="cjm_step_0" class="active"><?php esc_html_e( 'Introduction', 'css-js-minify' ); ?></li>
+                <li data-tab="cjm_step_1"><?php esc_html_e( 'Tabs', 'css-js-minify' ); ?></li>
+                <li data-tab="cjm_step_2"><?php esc_html_e( 'Buttons', 'css-js-minify' ); ?></li>
+                <li data-tab="cjm_step_3"><?php esc_html_e( 'Blocks', 'css-js-minify' ); ?></li>
+                <li data-tab="cjm_step_4"><?php esc_html_e( 'Boxes', 'css-js-minify' ); ?></li>
+            </ul>
+        </nav>
+
+        <div id="cjm_step_0" class="cjm-help-tab active">
+
+            <div class="cjm-help-content">
+
+                <p>
+	                <?php esc_html_e( "Welcome to our community plugin guide.", 'css-js-minify' ); ?>
+	                <?php esc_html_e( "This guide will guide you through functions, features and terms used in this plugin.", 'css-js-minify' ); ?>
+                </p>
+                <p>
+	                <?php esc_html_e( "I belive this plugin provides the most possible user friendly way of defining, minifying and concating your existing CSS & JS files among all existing possibilities (another plugins).", 'css-js-minify' ); ?>
+                </p>
+                <p>
+	                <?php esc_html_e( "However if you encounter any bugs feel free to send report to the author - you will find contact on github or WP plugin page.", 'css-js-minify' ); ?>
+                </p>
+
+            </div>
+
+        </div>
+        <div id="cjm_step_1" class="cjm-help-tab">
+
+            <div class="cjm-help-content">
+                <p>
+	                <?php esc_html_e( "Each tab stands for separate section - every section is set independently on others.", 'css-js-minify' ); ?>
+                </p>
+                <ul>
+                    <li>
+                        <strong><?php esc_html_e( "CSS", 'css-js-minify' ); ?>:</strong>
+                        <?php esc_html_e( "providing minification & concatenation options and settings for your registered cascading styles.", 'css-js-minify' ); ?>
+                    </li>
+                    <li>
+                        <strong><?php esc_html_e( "JS", 'css-js-minify' ); ?>:</strong>
+                        <?php esc_html_e( "providing minification & concatenation options and settings for your registered javascript files.", 'css-js-minify' ); ?>
+
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div id="cjm_step_2" class="cjm-help-tab">
+
+            <div class="cjm-help-content">
+
+                <p>
+	                <?php esc_html_e( "Every single button represents certain action over the tab.", 'css-js-minify' ); ?>
+                </p>
+                <ul>
+                    <li>
+                        <strong><?php esc_html_e( "Save", 'css-js-minify' ); ?>:</strong>
+	                    <?php esc_html_e( "will generate minified files sorted by block positions and positions of their boxes.", 'css-js-minify' ); ?>
+                    </li>
+                    <li>
+                        <strong><?php esc_html_e( "Delete all", 'css-js-minify' ); ?>:</strong>
+	                    <?php esc_html_e( "will delete all existing blocks within current tab. To make effect permanent you need also click Save button", 'css-js-minify' ); ?>
+                    </li>
+                    <li>
+                        <strong><?php esc_html_e( "Help", 'css-js-minify' ); ?>:</strong>
+	                    <?php esc_html_e( "will show this guide.", 'css-js-minify' ); ?>
+                    </li>
+                    <li>
+                        <strong><?php esc_html_e( "Switch (on/off)", 'css-js-minify' ); ?>:</strong>
+	                    <?php esc_html_e( "is placed at the top right corner and is used to turn on/off loading minified files (always set separately for each tab).", 'css-js-minify' ); ?>
+                        <p>
+	                        <strong>
+		                        <?php esc_html_e( "Please note: if you have turned this switch on, logging new files will not be loading - if you need to load new files you must turn off this switch first.", 'css-js-minify' ); ?>
+                            </strong>
+                        </p>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+        <div id="cjm_step_3" class="cjm-help-tab">
+
+            <div class="cjm-help-content">
+                <p>
+	                <?php esc_html_e( "Each block represents one minified file.", 'css-js-minify' ); ?>
+                </p>
+                <p>
+	                <?php esc_html_e( "First red block is the init base block. It's containing all registered styles/script files and you can sort them from here to your custom defined blocks.", 'css-js-minify' ); ?>
+                </p>
+                <p>
+	                <?php esc_html_e( "Boxes in red block are not loaded (when minification switch is turned on) and their default order is based on their original loading priorities in WordPress.", 'css-js-minify' ); ?>
+                </p>
+                <p>
+	                <?php esc_html_e( "Every custom block (grey ones) can contain infinite number of boxes.", 'css-js-minify' ); ?>
+                </p>
+                <p>
+	                <?php esc_html_e( "The order of blocks matters. Position of block defines loading priority (by default), higher priority on the left. However you can override priorities in block settings.", 'css-js-minify' ); ?>
+                </p>
+                <p>
+	                <?php esc_html_e( "Block buttons have these functions", 'css-js-minify' ); ?>:
+                </p>
+                <ul>
+                    <li>
+                        <strong><?php esc_html_e( "Arrow left/right", 'css-js-minify' ); ?>: </strong>
+	                    <?php esc_html_e( "move block in desired direction - it will determine blocks loading priorities - the most left positioned block has higher priority, you can however change priority manually in block settings..", 'css-js-minify' ); ?>
+                    </li>
+                    <li>
+                        <strong><?php esc_html_e( "Gear", 'css-js-minify' ); ?>: </strong>
+	                    <?php esc_html_e( "this opens the block settings. Settings options differ for CSS and JS. For CSS you can choose media, for JS if file will be included in footer or in header. For both you cas set asynchronous or deferred loading.", 'css-js-minify' ); ?>
+                    </li>
+                    <li>
+                        <strong><?php esc_html_e( "Basket", 'css-js-minify' ); ?>: </strong>
+	                    <?php esc_html_e( "will delete the block. To make changes parmanent you must also save everything with Save button.", 'css-js-minify' ); ?>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div id="cjm_step_4" class="cjm-help-tab">
+
+            <div class="cjm-help-content">
+                <p>
+	                <?php esc_html_e( "One box is representing one file loaded by WordPress.", 'css-js-minify' ); ?>
+                </p>
+                <p>
+	                <?php esc_html_e( "In the initial state all boxes are placed in the red block (init base block) in deactivated state and sorted by their default loading priorities.", 'css-js-minify' ); ?>
+	                <?php esc_html_e( "If plugin minification is enabled (switch is turned on) boxes placed in red init box will not be loaded by WordPress at all.", 'css-js-minify' ); ?>
+                </p>
+                <p>
+	                <?php esc_html_e( "Notice little grey number in top left corner - it's holding original priority order - eg. 3 was loaded before 5.", 'css-js-minify' ); ?>
+	                <?php esc_html_e( "You should always take this number seriously and order boxes in your custom blocks by them.", 'css-js-minify' ); ?>
+                </p>
+                <p>
+	                <?php esc_html_e( "Under the priority number there are couple of labels helping you to decide where should the box be placed.", 'css-js-minify' ); ?>
+	                <?php esc_html_e( "Grey labels stands for file version and is not that important.", 'css-js-minify' ); ?>
+	                <strong><?php esc_html_e( "Hint", 'css-js-minify' ); ?>: </strong>
+	                <?php esc_html_e( "CSS with same media (green) label and JS with 'in footer' (red) label should always be together - in most cases.", 'css-js-minify' ); ?>
+                </p>
+                <p>
+	                <?php esc_html_e( "On the right you can find arrow which will show additional data like url path.", 'css-js-minify' ); ?>
+                </p>
+                <p>
+                    <strong><?php esc_html_e( "Important", 'css-js-minify' ); ?> :</strong>
+	                <?php esc_html_e( "Positions of boxes within their block will determine priority of that same file when they will be concatenated.", 'css-js-minify' ); ?>
+	                <?php esc_html_e( "Always decide by priority number (in top left corner) where the box should stand - because earlier loaded files may be (and often are) overriden by later loaded files.", 'css-js-minify' ); ?>
+                </p>
+            </div>
+
+        </div>
 
 	</div>
 	<?php

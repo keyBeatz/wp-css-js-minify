@@ -2,11 +2,11 @@ $ = jQuery;
 
 function CssJsMinify(mode, box_html ) {
 	var self = this;
-	this.mode 		= mode;						// mód, typ = css|js
+	this.mode 		= mode;						// mode = css|js
 	this.wrap		= "#tab-" + mode;			// tab wrapper ID
-	this.aloader	= $( self.wrap ).find( "#file_header_" + this.mode + " .cjm_ajax_loader" );	// animační loader pro ajax v kontrolním panelu
-	this.box_html	= box_html;					// html boxu (generováno přes php), vkládáno při inicializaci tohoto objektu
-	this.data_send	= [];							// placeholder pro data, která se po té odešlou ke zpracování
+	this.aloader	= $( self.wrap ).find( "#file_header_" + this.mode + " .cjm_ajax_loader" );	// ajax animation loader
+	this.box_html	= box_html;					// html of box (template) generated thru php
+	this.data_send	= [];						// ajax data
 	this.boxes_up 	= function() {
 		return $( this.wrap ).find( ".cjm_sortable:not(.main)" ).length || 0;
 	};
@@ -131,7 +131,7 @@ function CssJsMinify(mode, box_html ) {
 			}
 			else if( $for == 'delete' ) {
 				// remove block
-				if( confirm( "Chcete opravdu smazat tento blok?" ) ) {
+				if( confirm( cjm.msg_confirm_block_delete ) ) {
 					// pick all boxes and move them to init block for reusability
 					if( box.find( ".cjm_sortable li" ).length > 0 ) {
 						$( self.wrap ).find( ".cjm_sortable.main" ).append( box.find( ".cjm_sortable" ).html() || "" );
@@ -165,20 +165,20 @@ function CssJsMinify(mode, box_html ) {
 				data.mode 	= mode;
 
 				// dialog
-				if( confirm( "Chcete opravdu uložit tyto bloky a vygenerovat nové soubory? Staré budou tímto smazány nebo přepsány." ) ) {
+				if( confirm( cjm.msg_confirm_save ) ) {
 					// ajax loader icon on
 					self.aloader.fadeIn( 'fast' );
 
 					// send ajax request
 					self.send_data( nonce, task, data, function( response ) {
 						if( !response || response == 'error' )
-							alert( 'Chyba, soubory se nepovedlo vygenerovat, zkuste to prosím znovu.' );
+							alert( cjm.msg_error );
 						else if( response == 'empty-data' )
-							alert( 'Patrně se snažíte vše smazat, k tomu prosím použijte tlačítko smazat vše.' );
+							alert( cjm.msg_error_empty );
 						else if( response == 'data-erased' )
-							alert( 'Data byla úspěšně smazána.' );
+							alert( cjm.msg_success_erased );
 						else if( response == 'saved' )
-							alert( 'Úspěšně uloženo' );
+							alert( cjm.msg_success_saved );
 
 						// ajax loader icon off
 						self.aloader.fadeOut( 'fast' );
@@ -188,7 +188,7 @@ function CssJsMinify(mode, box_html ) {
 			}
 			else if( $for == 'flush' ) {
 				// remove all blocks
-				if( confirm( "Chcete opravdu smazat tento blok?" ) ) {
+				if( confirm( cjm.msg_confirm_all_blocks_delete ) ) {
 					$( self.wrap ).find( ".cjm_sortable_box:not(.main)" ).each( function( i, v ) {
                         // pick all boxes and move them to init block for reusability
 						if( $(v).find( ".cjm_sortable li" ).length > 0 ) {
@@ -272,3 +272,38 @@ function CssJsMinify(mode, box_html ) {
 		});
 	}
 }
+
+var CjmHelp = (function() {
+	function CjmHelp() {
+		this.el = $("#cjm_help");
+		this.nav = this.el.find(".cjm-help-nav");
+		this.navFooter = this.el.find(".cjm-help-nav-footer");
+		this.activeTab = this.el.find(".cjm-help-tab.active");
+		this.tabNum = this.el.find(".cjm-help-tab").length;
+		this.init();
+	}
+    CjmHelp.prototype.init = function() {
+		this.menu();
+	};
+    CjmHelp.prototype.menu = function() {
+    	var self = this;
+        self.nav.find("li").on('click', function( e ) {
+			e.preventDefault();
+			if( $(this).hasClass('active') )
+				return false;
+
+			var tab = $(this).data("tab");
+			self.el.find( "#" + tab ).siblings(".cjm-help-tab").hide();
+			self.el.find( "#" + tab ).show().addClass("active");
+			$(this).siblings().removeClass('active');
+			$(this).addClass('active');
+		});
+	};
+    return CjmHelp;
+})();
+
+$(document).ready( function() {
+    var CjmGuide = new CjmHelp();
+//CjmGuide.init();
+});
+

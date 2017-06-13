@@ -42,7 +42,14 @@ abstract class AdminBase extends FileBase
 		//wp_enqueue_script( 'cjm-jquery-ui-theme', $this->getPluginUrl() . '/assets/jquery-ui/jquery-ui.theme.min.js' );
 
 		$translation_array = array(
-			'ajax_url' => admin_url( 'admin-ajax.php' )
+			'ajax_url' => admin_url( 'admin-ajax.php' ),
+			'msg_error' => esc_html__( "Error, minified files could not be generated. Please try again.", "css-js-minify" ),
+			'msg_error_empty' => esc_html__( "You probably trying to delete all blocks. To achieve this please use button Delete All.", "css-js-minify" ),
+			'msg_success_erased' => esc_html__( "Successfully deleted.", "css-js-minify" ),
+			'msg_success_saved' => esc_html__( "Successfully saved.", "css-js-minify" ),
+			'msg_confirm_save' => esc_html__( "Do you really want to generate new files? The old ones will be deleted.", "css-js-minify" ),
+			'msg_confirm_block_delete' => esc_html__( "Do you really want to delete this block?", "css-js-minify" ),
+			'msg_confirm_all_blocks_delete' => esc_html__( "Do you really want to delete all blocks?", "css-js-minify" )
 		);
 		wp_localize_script( 'cjm-admin-minify', 'cjm', $translation_array );
 	}
