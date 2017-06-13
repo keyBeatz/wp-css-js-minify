@@ -91,9 +91,10 @@ ul.cjm_sortable li.cjm_item:hover {
 .cjm_box_message {
 	padding: 15px;
 	text-align: center;
-	border: 3px dashed #ccc;
+	border: 3px dashed #9c9c9c;
 	font-size: 15px;
 	color: #7b7b7b;
+	cursor: default;
 }
 
 .cjm_sortable_box.main .cjm_box_message {
@@ -179,12 +180,20 @@ nav.cjm_file_header  {
 
 nav.cjm_file_header ul {
 	margin: 0;
+	position: relative;
 }
 
 nav.cjm_file_header ul li {
 	display: inline-block;
 	margin: 0;
 	margin-right: 5px;
+}
+
+nav.cjm_file_header ul li.cjm-ajax-loader-wrap {
+	height: 40px;
+	position: absolute;
+	top: -6px;
+	left: 102%;
 }
 
 nav.cjm_file_header ul li button {
@@ -212,8 +221,8 @@ nav.cjm_file_header ul li button img {
 
 nav.cjm_file_header ul li button .cjm-wp-icon {
 	font-size: 35px;
-	width: 30px;
-	height: 30px;
+	width: 36px;
+	height: 36px;
 	margin: 0 auto;
 	color: #757575;
 }
@@ -224,6 +233,8 @@ nav.cjm_file_header ul li button:hover .cjm-wp-icon {
 
 nav.cjm_file_header ul li img.cjm_ajax_loader {
 	vertical-align: sub;
+	width: 53px;
+	height: auto;
 }
 
 .cjm_block_settings {
@@ -396,20 +407,36 @@ nav.cjm_file_header ul li img.cjm_ajax_loader {
 
 .ui-dialog.cjm_dialog {
 	top: 80px;
+	border-radius: 0;
+	border: none;
+	padding: 0;
+	box-shadow: 0px 4px 24px -13px #4c4c4c;
 }
 
 .ui-dialog.cjm_dialog .ui-dialog-titlebar.ui-widget-header {
-    padding: 4px 10px;
+	padding: 10px 15px;
+	border-radius: 0;
+	border: none;
+	background: #f44336;
+	color: #fff;
+}
+
+.ui-dialog.cjm_dialog .ui-dialog-titlebar-close {
+	right: 10px;
+	background: #d22619;
+	color: #ffffff;
+	border-radius: 0;
+	border: none;
+}
+
+.ui-dialog.cjm_dialog .ui-dialog-titlebar-close:hover {
+	background: #d22619;
 }
 
 .ui-dialog.cjm_dialog button.ui-dialog-titlebar-close:before {
 	content: '';
 }
 
-.ui-dialog.cjm_dialog button.ui-dialog-titlebar-close .ui-icon-closethick {
-	top: 0;
-	left: 0;
-}
 
 .ui-dialog.cjm_dialog button.ui-dialog-titlebar-close .ui-button-text {
 	display: none;
@@ -716,4 +743,3 @@ table.cjm-admin-table > tbody > tr > td {
 #cjm_help .cjm-help-content {
 	padding-top: 10px;
 }
-

@@ -89,13 +89,12 @@ function CssJsMinify(mode, box_html ) {
 			items: "li.cjm_item",
 			receive: function( event, ui ) {
 				// hide welcome message
-				ui.item.siblings( '.cjm_box_message_wrap' ).hide();
+				ui.item.siblings( ':not(.cjm_item)' ).hide();
 			},
 			change: function( event, ui ) {
 				// show message if box is empty
-
-				if( ui.item.siblings( 'li' ).length == 0 ) {
-					ui.item.siblings( '.cjm_box_message_wrap' ).show();
+				if( ui.item.siblings( 'li.cjm_item' ).length === 0 ) {
+					ui.item.siblings( ':not(.cjm_item)' ).show();
 				}
 
 			}
@@ -203,7 +202,9 @@ function CssJsMinify(mode, box_html ) {
 			else if( $for == 'guide' ) {
 				$("#cjm_help").dialog({
 					width: 500,
-					dialogClass: 'cjm_dialog'
+					height: "auto",
+					dialogClass: 'cjm_dialog',
+                    position: { my: 'top', at: 'top+120' }
 				});
 			}
 		});

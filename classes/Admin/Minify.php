@@ -268,11 +268,11 @@ class Minify extends AdminBase
 			$priority 		= 0;
 			$printed_files = 0;
 			?>
-            <li>
 			<?php if( !empty( $registered ) ) : ?>
 			<?php foreach( $registered as $handle => $file ) : $priority++; if( !in_array( $handle, $this->all_minified_reg_handles[$mode] ) ) : $printed_files++; ?>
+
 				<?php $this->blockItem( $registered, $handle, $mode, $priority ); ?>
-			</li>
+
 			<?php endif; endforeach; ?>
 			<?php endif;?>
 			<?php
@@ -383,7 +383,7 @@ class Minify extends AdminBase
 					</button>
 				</li>
 
-				<li>
+				<li class="cjm-ajax-loader-wrap">
 					<?php echo cjm_ajax_loader(); ?>
 				</li>
 			</ul>

@@ -37,7 +37,7 @@ function cjm_img( $name, $size = '16', $src_only = false ) {
  *
  * @return string
  */
-function cjm_ajax_loader( $name = "gears", $size = 40, $file_type = "svg", $display = false, $src_only = false ) {
+function cjm_ajax_loader( $name = "ajax_loader", $size = 40, $file_type = "svg", $display = false, $src_only = false ) {
 	$src = \CJM\Plugin::getSetting( "pluginUrl" ) . "/assets/img/" . $name . "." . $file_type;
 
 	if( $src_only )
