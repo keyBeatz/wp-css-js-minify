@@ -65,14 +65,15 @@ ul.cjm_sortable li.cjm_item:hover {
 	text-align: right;
 	background: transparent;
 	border: none;
-	padding: 3px 3px;
-	width: 22px;
-	height: 22px;
+	padding: 1px 1px;
+	width: 23px;
+	height: 23px;
 }
 
+/*
 .cjm_sortable_header button:hover {
 	background: #424242;
-}
+}*/
 
 .cjm_block_settings .cjm_sortable_header {
 	text-align: right;
@@ -104,7 +105,50 @@ ul.cjm_sortable li.cjm_item:hover {
 	width: 200px;
 	float: left;
 	text-align: center;
-	padding-top: 150px;
+	padding-top: 90px;
+}
+
+.cjm-add-block-icon {
+	font-size: 50px;
+	display: block;
+	width: auto;
+	height: auto;
+	color: #757575;
+}
+
+.cjm-add-block-icon:hover {
+}
+
+.cjm-sortable-add-block .cjm-add-block-icon {
+	font-size: 50px;
+	display: block;
+	width: auto;
+	height: auto;
+	color: #757575;
+}
+
+.cjm-sortable-add-block:hover .cjm-add-block-icon {
+	color: #5a5a5a;
+}
+
+.cjm-block-icon {
+	width: auto;
+	height: auto;
+	font-size: 20px;
+	font-weight: normal;
+	color: #fff;
+}
+
+.cjm-block-icon:hover {
+	color: #fff;
+}
+
+.cjm-block-icon.cjm-dark {
+	color: #f44336;
+}
+
+.cjm-block-icon.cjm-dark:hover {
+	color: #d62a1d;
 }
 
 button.cjm-sortable-add-block {
@@ -150,13 +194,13 @@ nav.cjm_file_header ul li button {
 	border-radius: 0px;
 	padding: 4px 5px;
 	text-align: center;
-	width: 65px;
+	width: 55px;
 	font-size: 12px;
 	color: #404040;
 }
 
 nav.cjm_file_header ul li button:hover {
-	background: #ccc;
+	/*background: #ccc;*/
 	color: #101010;
 }
 
@@ -164,6 +208,18 @@ nav.cjm_file_header ul li button img {
 	display: block;
 	margin: 0 auto;
 	margin-bottom: 6px;
+}
+
+nav.cjm_file_header ul li button .cjm-wp-icon {
+	font-size: 35px;
+	width: 30px;
+	height: 30px;
+	margin: 0 auto;
+	color: #757575;
+}
+
+nav.cjm_file_header ul li button:hover .cjm-wp-icon {
+	color: #5a5a5a;
 }
 
 nav.cjm_file_header ul li img.cjm_ajax_loader {

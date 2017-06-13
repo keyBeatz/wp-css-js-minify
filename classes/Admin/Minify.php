@@ -138,18 +138,26 @@ class Minify extends AdminBase
 	<nav class="cjm_sortable_header">
 		<ul style="float:left;">
 			<li>
-				<button data-for="move-left" data-toggle="tooltip" title="<?php esc_attr_e( 'Move file block left', 'css-js-minify' ); ?>"><?php echo cjm_img( 'arrow-left' ); ?></button>
+				<button data-for="move-left" data-toggle="tooltip" title="<?php esc_attr_e( 'Move file block left', 'css-js-minify' ); ?>">
+                    <span class="cjm-block-icon dashicons dashicons-arrow-left-alt2"></span>
+                </button>
 			</li>
 			<li>
-				<button data-for="move-right" data-toggle="tooltip" title="<?php esc_attr_e( 'Move file block right', 'css-js-minify' ); ?>"><?php echo cjm_img( 'arrow-right' ); ?></button>
+				<button data-for="move-right" data-toggle="tooltip" title="<?php esc_attr_e( 'Move file block right', 'css-js-minify' ); ?>">
+                    <span class="cjm-block-icon dashicons dashicons-arrow-right-alt2"></span>
+                </button>
 			</li>
 		</ul>
 		<ul style="float:right;">
 			<li>
-				<button data-for="settings" data-toggle="tooltip" title="<?php esc_attr_e( 'Show file block settings', 'css-js-minify' ); ?>"><?php echo cjm_img( 'settings' ); ?></button>
+				<button data-for="settings" data-toggle="tooltip" title="<?php esc_attr_e( 'Show file block settings', 'css-js-minify' ); ?>">
+                    <span class="cjm-block-icon dashicons dashicons-admin-generic"></span>
+                </button>
 			</li>
 			<li>
-				<button data-for="delete" data-toggle="tooltip" title="<?php esc_attr_e( 'Remove file block', 'css-js-minify' ); ?>"><?php echo cjm_img( 'delete' ); ?></button>
+				<button data-for="delete" data-toggle="tooltip" title="<?php esc_attr_e( 'Remove file block', 'css-js-minify' ); ?>">
+                    <span class="cjm-block-icon dashicons dashicons-trash"></span>
+                </button>
 			</li>
 		</ul>
 	</nav>
@@ -191,7 +199,9 @@ class Minify extends AdminBase
 		<nav class="cjm_sortable_header">
 			<ul>
 				<li>
-					<button data-for="close-settings" data-toggle="tooltip" title="<?php esc_attr_e( 'Hide settings', 'css-js-minify' ); ?>"><?php echo cjm_img( 'cancel' ); ?></button>
+					<button data-for="close-settings" data-toggle="tooltip" title="<?php esc_attr_e( 'Hide settings', 'css-js-minify' ); ?>">
+                        <span class="cjm-block-icon cjm-dark dashicons dashicons-no"></span>
+                    </button>
 				</li>
 			</ul>
 		</nav>
@@ -266,10 +276,10 @@ class Minify extends AdminBase
 			<?php endif; endforeach; ?>
 			<?php endif;?>
 			<?php
-				if( !empty( $registered ) )
-					$this->blockMessage( 'empty', $hide = $printed_files == 0 ? false : true );
-				else
-					$this->blockMessage( 'not_activated', $hide = $printed_files == 0 ? false : true );
+			if( !empty( $registered ) )
+				$this->blockMessage( 'empty', $hide = $printed_files == 0 ? false : true );
+			else
+				$this->blockMessage( 'not_activated', $hide = $printed_files == 0 ? false : true );
 			?>
 		</ul>
 	</div>
@@ -355,21 +365,21 @@ class Minify extends AdminBase
 		<nav class="cjm_file_header">
 			<ul style="float:left;">
 				<li>
-					<button data-for="generate" data-nonce="<?php echo wp_create_nonce( 'generate_minified_files' ); ?>" title="<?php esc_attr_e( 'Generate files', 'css-js-minify' ); ?>">
-						<?php echo cjm_img( 'floppy', 24 ); ?>
-                        <?php esc_html_e( 'Save', 'css-js-minify' ); ?>
+					<button data-for="generate" data-toggle="tooltip" data-nonce="<?php echo wp_create_nonce( 'generate_minified_files' ); ?>" title="<?php esc_attr_e( 'Generate files', 'css-js-minify' ); ?>">
+                        <span class="cjm-wp-icon dashicons dashicons-welcome-add-page"></span>
+                        <?php /*esc_html_e( 'Save', 'css-js-minify' ); */?>
 					</button>
 				</li>
 				<li>
-					<button data-for="flush" title="<?php esc_attr_e( 'Erase all files', 'css-js-minify' ); ?>">
-						<?php echo cjm_img( 'delete', 24 ); ?>
-                        <?php esc_html_e( 'Delete all', 'css-js-minify' ); ?>
+					<button data-for="flush" data-toggle="tooltip" title="<?php esc_attr_e( 'Erase all files', 'css-js-minify' ); ?>">
+                        <span class="cjm-wp-icon dashicons dashicons-trash"></span>
+                        <?php /*esc_html_e( 'Delete all', 'css-js-minify' ); */?>
 					</button>
 				</li>
 				<li>
-					<button data-for="guide" title="<?php esc_attr_e( 'Show guidance', 'css-js-minify' ); ?>">
-						<?php echo cjm_img( 'info', 24 ); ?>
-                        <?php esc_html_e( 'Help', 'css-js-minify' ); ?>
+					<button data-for="guide" data-toggle="tooltip" title="<?php esc_attr_e( 'Show guidance', 'css-js-minify' ); ?>">
+                        <span class="cjm-wp-icon dashicons dashicons-editor-help"></span>
+                        <?php /*esc_html_e( 'Help', 'css-js-minify' ); */?>
 					</button>
 				</li>
 
@@ -402,8 +412,8 @@ class Minify extends AdminBase
 	public function addBlock() {
 	?>
 	<div class="cjm-sortable-add-block-wrapper">
-		<button class="cjm-sortable-add-block">
-			<img src="<?php echo cjm_img( 'plus', '64', true ); ?>" alt="<?php esc_attr_e( 'Add file block', 'css-js-minify' ); ?>" title="<?php esc_attr_e( 'Click to add new file block', 'css-js-minify' ); ?>">
+		<button class="cjm-sortable-add-block" title="<?php esc_attr_e( 'Click to add new file block', 'css-js-minify' ); ?>">
+            <span class="cjm-add-block-icon dashicons dashicons-plus"></span>
 			<?php esc_html_e( 'Add file block', 'css-js-minify' ); ?>
 		</button>
 	</div>
