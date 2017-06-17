@@ -47,7 +47,6 @@ function CssJsMinify(mode, box_html ) {
 			$this.parent().addClass( 'loading' );
 			$this.prop( "disabled", true );
 
-			console.log( data );
 
 			// ajax request
 			self.send_data( nonce, task, data, function( response ) {
@@ -66,7 +65,6 @@ function CssJsMinify(mode, box_html ) {
 				self.aloader.fadeOut( 'fast' );
 				$this.parent().removeClass( 'loading' );
 				$this.prop( "disabled", false );
-				console.log( response );
 			});
 		});
 	};
@@ -266,11 +264,9 @@ function CssJsMinify(mode, box_html ) {
 		data.task 		= task;
 		data.data 		= data_send;
 
-		console.log( data.data );
 
 		// send ajax request
 		$.post( cjm.ajax_url, data, function( response ) {
-			console.log( response );
 			// callback for response handling
 			callback( response );
 		});

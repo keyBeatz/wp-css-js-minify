@@ -88,7 +88,7 @@ class FileRegistrar extends FileBase
 		if( !empty( $this->getMinifiedCss() ) && is_array( $this->getMinifiedCss() ) ) {
 			foreach( $this->getMinifiedCss() as $file ) {
 				if( ( $file['async'] == 'async' || $file['async'] == 'defer' ) && $file['name'] == $handle )
-					$tag = "<noscript class='cjm_css_async'>{esc_html( $tag )}</noscript>";
+					$tag = "<noscript class='cjm_css_async'>{$tag}</noscript>";
 			}
 		}
 

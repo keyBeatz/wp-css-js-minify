@@ -13,7 +13,6 @@ function cjm_css_async() {
    	if( jQuery( css ).length > 0 ) {
    		jQuery( css ).each( function( i ) {
    			var html = jQuery( this ).html();
-   			console.log(html);
    			if( html.length > 0 ) {
    				jQuery( this ).before( html.replace('&lt;', '<').replace('&gt;', '>') );
    			}
