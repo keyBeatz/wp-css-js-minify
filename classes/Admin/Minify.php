@@ -428,6 +428,7 @@ class Minify extends AdminBase
                     <li data-tab="cjm_step_2"><?php esc_html_e( 'Buttons', 'css-js-minify' ); ?></li>
                     <li data-tab="cjm_step_3"><?php esc_html_e( 'Blocks', 'css-js-minify' ); ?></li>
                     <li data-tab="cjm_step_4"><?php esc_html_e( 'Boxes', 'css-js-minify' ); ?></li>
+                    <li data-tab="cjm_step_5"><?php esc_html_e( 'Debug', 'css-js-minify' ); ?></li>
                 </ul>
             </nav>
 
@@ -549,7 +550,7 @@ class Minify extends AdminBase
                     </p>
                     <p>
 						<?php esc_html_e( "In the initial state all boxes are placed in the red block (init base block) in deactivated state and sorted by their default loading priorities.", 'css-js-minify' ); ?>
-						<?php esc_html_e( "If plugin minification is enabled (switch is turned on) boxes placed in red init box will not be loaded by WordPress at all.", 'css-js-minify' ); ?>
+						<?php esc_html_e( "If plugin minification is enabled (switch is turned on) boxes placed in red init box will be loaded by WordPress as usual.", 'css-js-minify' ); ?>
                     </p>
                     <p>
 						<?php esc_html_e( "Notice a little grey number in the top left corner - it holds the original priority order - e.g. 3 was loaded before 5.", 'css-js-minify' ); ?>
@@ -568,6 +569,24 @@ class Minify extends AdminBase
                         <strong><?php esc_html_e( "Important", 'css-js-minify' ); ?> :</strong>
 						<?php esc_html_e( "Positions of boxes within their block will determine the priority of that same file upon concatenation.", 'css-js-minify' ); ?>
 						<?php esc_html_e( "Always decide by the priority number (in the top left corner), when deciding upon the box positioning - because files that were loaded earlier may be (and often are) overridden by files that are loaded later.", 'css-js-minify' ); ?>
+                    </p>
+                </div>
+
+            </div>
+            <div id="cjm_step_5" class="cjm-help-tab">
+
+                <div class="cjm-help-content">
+                    <p>
+						<?php esc_html_e( "We are working on debugging tools to provide you easy and friendly way of selecting right order of files (boxes & blocks).", 'css-js-minify' ); ?>
+                    </p>
+                    <p>
+						<?php esc_html_e( "Meanwhile (for JS) I recommend to use your browser console - if there are no errors, everything is ok.", 'css-js-minify' ); ?>
+                    </p>
+                    <p>
+						<?php esc_html_e( "For CSS you should check site if everything is displaying as it should.", 'css-js-minify' ); ?>
+                    </p>
+                    <p>
+						<strong><?php esc_html_e( "Please read through this guide first then you should have no problem with setting the right order of files.", 'css-js-minify' ); ?></strong>
                     </p>
                 </div>
 

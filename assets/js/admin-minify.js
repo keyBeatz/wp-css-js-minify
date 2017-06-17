@@ -69,9 +69,6 @@ function CssJsMinify(mode, box_html ) {
 				console.log( response );
 			});
 		});
-
-		// move message box from bottom to top (fixing margin :last-child bug)
-        $(".cjm_sortable_box.main .cjm_box_message_wrap").prependTo(".cjm_sortable_box.main");
 	};
 	this.init_tooltips = function() {
 		$( this.wrap ).find( '[data-toggle="tooltip"]' ).tooltip({
@@ -310,7 +307,11 @@ var CjmHelp = (function() {
 })();
 
 $(document).ready( function() {
-    var CjmGuide = new CjmHelp();
-//CjmGuide.init();
+    new CjmHelp();
+    // move message box from bottom to top (fixing margin :last-child bug)
+    $(".cjm_sortable_box.main > ul").each( function() {
+        if( $(this).find(".cjm_box_message_wrap").siblings().length !== 0 )
+            $(this).find(".cjm_box_message_wrap").prependTo( $(this) );
+    });
 });
 

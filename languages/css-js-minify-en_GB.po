@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2017-06-17 20:33+0200\n"
-"PO-Revision-Date: 2017-06-17 20:33+0200\n"
+"POT-Creation-Date: 2017-06-17 22:05+0200\n"
+"PO-Revision-Date: 2017-06-17 22:05+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -117,7 +117,7 @@ msgstr ""
 msgid "Generate files"
 msgstr ""
 
-#: Admin/Minify.php:373 Admin/Minify.php:485
+#: Admin/Minify.php:373 Admin/Minify.php:486
 msgid "Erase all files"
 msgstr ""
 
@@ -162,149 +162,153 @@ msgstr ""
 msgid "Boxes"
 msgstr ""
 
-#: Admin/Minify.php:439
-msgid "Welcome to our community plugin guide."
+#: Admin/Minify.php:431
+msgid "Debug"
 msgstr ""
 
 #: Admin/Minify.php:440
+msgid "Welcome to our community plugin guide."
+msgstr ""
+
+#: Admin/Minify.php:441
 msgid ""
 "This guide will walk you through functions, features and terms used in this "
 "plugin."
 msgstr ""
 
-#: Admin/Minify.php:443
+#: Admin/Minify.php:444
 msgid ""
 "I believe, this plugin provides the most user-friendly way of defining, "
 "minifying and concatenating of your existing CSS & JS files among all "
 "existing possibilities (other plugins)."
 msgstr ""
 
-#: Admin/Minify.php:446
+#: Admin/Minify.php:447
 msgid ""
 "However, if you encounter any bugs, fell free to send a report to the author "
 "- you can find contact information on GitHub or on the WordPress plugin page."
 msgstr ""
 
-#: Admin/Minify.php:456
+#: Admin/Minify.php:457
 msgid ""
 "Each tab stands for a separate section - every section is set independently "
 "of others."
 msgstr ""
 
-#: Admin/Minify.php:460
+#: Admin/Minify.php:461
 msgid "CSS"
 msgstr ""
 
-#: Admin/Minify.php:461
+#: Admin/Minify.php:462
 msgid ""
 "providing minification & concatenation options and settings for your "
 "registered cascading styles."
 msgstr ""
 
-#: Admin/Minify.php:464
+#: Admin/Minify.php:465
 msgid "JS"
 msgstr ""
 
-#: Admin/Minify.php:465
+#: Admin/Minify.php:466
 msgid ""
 "providing minification & concatenation options and settings for your "
 "registered javascript files."
 msgstr ""
 
-#: Admin/Minify.php:477
+#: Admin/Minify.php:478
 msgid "Each button represents a certain action over the tab."
 msgstr ""
 
-#: Admin/Minify.php:481
+#: Admin/Minify.php:482
 msgid "Save"
 msgstr ""
 
-#: Admin/Minify.php:482
+#: Admin/Minify.php:483
 msgid ""
 "will generate minified files sorted by block positions and positions of "
 "their boxes."
 msgstr ""
 
-#: Admin/Minify.php:486
+#: Admin/Minify.php:487
 msgid ""
 "will erase all existing blocks within the current tab. You also need to "
 "click the 'Save' button to make the effect permanent"
 msgstr ""
 
-#: Admin/Minify.php:489
+#: Admin/Minify.php:490
 msgid "Help"
 msgstr ""
 
-#: Admin/Minify.php:490
+#: Admin/Minify.php:491
 msgid "will show this guide."
 msgstr ""
 
-#: Admin/Minify.php:493
+#: Admin/Minify.php:494
 msgid "Switch (on/off)"
 msgstr ""
 
-#: Admin/Minify.php:494
+#: Admin/Minify.php:495
 msgid ""
 "is placed at the top right corner and is used to turn loading of the "
 "minified files on and off (always set separately for each tab)."
 msgstr ""
 
-#: Admin/Minify.php:497
+#: Admin/Minify.php:498
 msgid ""
 "Please note: with this switch turned on, logger of new files will not be "
 "loading - if you need to load new files (eg. if you installed new plugin) "
 "you must turn off this switch first."
 msgstr ""
 
-#: Admin/Minify.php:510
+#: Admin/Minify.php:511
 msgid "Each block represents one minified file."
 msgstr ""
 
-#: Admin/Minify.php:513
+#: Admin/Minify.php:514
 msgid ""
 "First red block is the init base block. It contains all registered styles/"
 "script files, which can be sorted from here to your custom defined blocks."
 msgstr ""
 
-#: Admin/Minify.php:516
+#: Admin/Minify.php:517
 msgid ""
 "Boxes in the red block are not loaded (when the minification switch is "
 "turned on) and their default order is based on their original loading "
 "priorities in WordPress."
 msgstr ""
 
-#: Admin/Minify.php:519
+#: Admin/Minify.php:520
 msgid ""
 "Every custom block (grey coloured) can contain an infinite number of boxes."
 msgstr ""
 
-#: Admin/Minify.php:522
+#: Admin/Minify.php:523
 msgid ""
 "The order of blocks matters. Position of a block defines loading priority "
 "(by default) - higher priority on the left. However, you can override "
 "priorities in block settings."
 msgstr ""
 
-#: Admin/Minify.php:525
+#: Admin/Minify.php:526
 msgid "Block buttons have these functions"
 msgstr ""
 
-#: Admin/Minify.php:529
+#: Admin/Minify.php:530
 msgid "Arrow left/right"
 msgstr ""
 
-#: Admin/Minify.php:530
+#: Admin/Minify.php:531
 msgid ""
 "move block in desired direction - it will determine blocks loading "
 "priorities - the leftmost block has the highest priority, you can however "
 "change priority manually in block settings."
 msgstr ""
 
-#: Admin/Minify.php:533
+#: Admin/Minify.php:534
 msgid "Gear"
 msgstr ""
 
-#: Admin/Minify.php:534
+#: Admin/Minify.php:535
 msgid ""
 "this opens the block settings. Settings options differ for CSS and JS. For "
 "CSS you can choose media. For JS you can select whether file will be "
@@ -312,83 +316,105 @@ msgid ""
 "deferred loading for both CSS and JS."
 msgstr ""
 
-#: Admin/Minify.php:537
+#: Admin/Minify.php:538
 msgid "Basket"
 msgstr ""
 
-#: Admin/Minify.php:538
+#: Admin/Minify.php:539
 msgid ""
 "will delete the block. You also need to save everything with the 'Save' "
 "button to make changes permanent."
 msgstr ""
 
-#: Admin/Minify.php:548
+#: Admin/Minify.php:549
 msgid "One box represents one file loaded by WordPress."
 msgstr ""
 
-#: Admin/Minify.php:551
+#: Admin/Minify.php:552
 msgid ""
 "In the initial state all boxes are placed in the red block (init base block) "
 "in deactivated state and sorted by their default loading priorities."
 msgstr ""
 
-#: Admin/Minify.php:552
+#: Admin/Minify.php:553
 msgid ""
 "If plugin minification is enabled (switch is turned on) boxes placed in red "
-"init box will not be loaded by WordPress at all."
+"init box will be loaded by WordPress as usual."
 msgstr ""
 
-#: Admin/Minify.php:555
+#: Admin/Minify.php:556
 msgid ""
 "Notice a little grey number in the top left corner - it holds the original "
 "priority order - e.g. 3 was loaded before 5."
 msgstr ""
 
-#: Admin/Minify.php:556
+#: Admin/Minify.php:557
 msgid ""
 "You should always take this number as a guide and order boxes in your custom "
 "blocks by it."
 msgstr ""
 
-#: Admin/Minify.php:559
+#: Admin/Minify.php:560
 msgid ""
 "Under the priority number, there are a couple of labels helping you to "
 "decide where should the box be placed."
 msgstr ""
 
-#: Admin/Minify.php:560
+#: Admin/Minify.php:561
 msgid "Grey label stands for the file version and is not that important."
 msgstr ""
 
-#: Admin/Minify.php:561
+#: Admin/Minify.php:562
 msgid "Hint"
 msgstr ""
 
-#: Admin/Minify.php:562
+#: Admin/Minify.php:563
 msgid ""
 "CSS with the same media (green) label and JS with 'in footer' (red) label "
 "should always be together - in most cases."
 msgstr ""
 
-#: Admin/Minify.php:565
+#: Admin/Minify.php:566
 msgid ""
 "On the right you can find an arrow, which will show additional data like url "
 "path."
 msgstr ""
 
-#: Admin/Minify.php:568
+#: Admin/Minify.php:569
 msgid "Important"
 msgstr ""
 
-#: Admin/Minify.php:569
+#: Admin/Minify.php:570
 msgid ""
 "Positions of boxes within their block will determine the priority of that "
 "same file upon concatenation."
 msgstr ""
 
-#: Admin/Minify.php:570
+#: Admin/Minify.php:571
 msgid ""
 "Always decide by the priority number (in the top left corner), when deciding "
 "upon the box positioning - because files that were loaded earlier may be "
 "(and often are) overridden by files that are loaded later."
+msgstr ""
+
+#: Admin/Minify.php:580
+msgid ""
+"We are working on debugging tools to provide you easy and friendly way of "
+"selecting right order of files (boxes & blocks)."
+msgstr ""
+
+#: Admin/Minify.php:583
+msgid ""
+"Meanwhile (for JS) I recommend to use your browser console - if there are no "
+"errors, everything is ok."
+msgstr ""
+
+#: Admin/Minify.php:586
+msgid "For CSS you should check site if everything is displaying as it should."
+msgstr ""
+
+#: Admin/Minify.php:589
+msgid ""
+"Please read through this guide first then you should have no problem with "
+"setting the right order of files."
 msgstr ""
