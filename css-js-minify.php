@@ -87,6 +87,10 @@ class Plugin extends Settings
 		new \CJM\Admin\Minify;
 	}
 
+	public static function loadTextdomain() {
+		load_plugin_textdomain( 'css-js-minify', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+	}
+
 	public static function install() {
 		$uploadFolder = ABSPATH . "wp-content/uploads/";
 		$pluginFolder = $uploadFolder . "css-js-minify/";
@@ -106,6 +110,6 @@ class Plugin extends Settings
 	}
 }
 add_action( 'plugins_loaded', array( __NAMESPACE__ . '\Plugin', 'init' ) );
+add_action( 'plugins_loaded', array( __NAMESPACE__ . '\Plugin', 'loadTextdomain' ) );
 
 register_activation_hook( __FILE__, array( 'CJM\Plugin', 'install' ) );
-
