@@ -332,7 +332,7 @@ class Minify extends AdminBase
 			</div>
 		</div>
 		<div class="sRight sOpen">
-			<?php echo cjm_img( 'double-arrow' ); ?>
+            <span class="dashicons dashicons-arrow-down"></span>
 		</div>
 	</li>
 	<?php

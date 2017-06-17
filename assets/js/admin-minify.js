@@ -23,6 +23,10 @@ function CssJsMinify(mode, box_html ) {
 			var parent = $(this).parent();
 			parent.find( ".sSettings" ).slideToggle('fast');
 			parent.toggleClass( "settings-open" );
+			if( parent.hasClass( "settings-open" ) )
+                $(this).children("span.dashicons").removeClass("dashicons-arrow-down").addClass("dashicons-arrow-up");
+			else
+                $(this).children("span.dashicons").removeClass("dashicons-arrow-up").addClass("dashicons-arrow-down");
 		});
 
 		$( self.wrap ).on( 'change', '.cjm_main_toggle', function() {
@@ -66,6 +70,8 @@ function CssJsMinify(mode, box_html ) {
 			});
 		});
 
+		// move message box from bottom to top (fixing margin :last-child bug)
+        $(".cjm_sortable_box.main .cjm_box_message_wrap").prependTo(".cjm_sortable_box.main");
 	};
 	this.init_tooltips = function() {
 		$( this.wrap ).find( '[data-toggle="tooltip"]' ).tooltip({

@@ -743,3 +743,21 @@ table.cjm-admin-table > tbody > tr > td {
 #cjm_help .cjm-help-content {
 	padding-top: 10px;
 }
+
+.cjm_sortable_box li.cjm_item > .sRight.sOpen > .dashicons {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	color: #989898;
+}
+
+.cjm_sortable_box li.cjm_item > .sRight.sOpen:hover > .dashicons {
+	color: #f44336;
+}
+
+.cjm_sortable_box li.cjm_item.settings-open > .sRight.sOpen > .dashicons {
+	color: #f44336;
+}

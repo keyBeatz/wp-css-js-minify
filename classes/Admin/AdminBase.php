@@ -32,14 +32,12 @@ abstract class AdminBase extends FileBase
 		wp_enqueue_style( 'cjm-admin', $this->getPluginUrl() . '/assets/css/admin.css' );
 
 		// js
-		//wp_enqueue_script( 'cjm-jquery-ui', $this->getPluginUrl() . '/assets/jquery-ui/jquery-ui.min.js' );
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-dialog' );
 		wp_enqueue_script( 'jquery-ui-tooltip' );
 		wp_enqueue_script( 'jquery-ui-sortable' );
 		wp_enqueue_script( 'jquery-ui-tabs' );
 		wp_enqueue_script( 'cjm-admin-minify', $this->getPluginUrl() . '/assets/js/admin-minify.js' );
-		//wp_enqueue_script( 'cjm-jquery-ui-theme', $this->getPluginUrl() . '/assets/jquery-ui/jquery-ui.theme.min.js' );
 
 		$translation_array = array(
 			'ajax_url' => admin_url( 'admin-ajax.php' ),
