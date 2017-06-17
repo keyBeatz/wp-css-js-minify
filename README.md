@@ -1,6 +1,4 @@
-# css-js-minify
+# Css & JS Minify WordPress plugin
 Friendly WordPress minify &amp; concat plugin for CSS &amp; JS files, supports defer/async loading for both
 
-This plugin is in development, expect release with translations soon.
-
-Readme comming soon.
+Guidance for this plugin can be found after the installation in Wordpress on Css & JS Minify settings page (WP Admin -> settings -> CSS & JS Minify)

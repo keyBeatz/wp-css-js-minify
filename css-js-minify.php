@@ -1,10 +1,11 @@
 <?php
 /*
 Plugin Name: CSS & JS Minify
-Description: Friendly way to define custom blocks of style and javascript files with defer/async CSS & JS loading support.
+Description: Friendly way to define custom blocks of style and javascript files with defer/async loading support.
 Text Domain: css-js-minify
 Domain Path: /languages
-Version: 0.9
+Version: 0.9.3
+License: MIT
 Author: keyBeatz
 */
 
