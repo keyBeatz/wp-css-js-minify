@@ -7,6 +7,7 @@ Domain Path: /languages
 Version: 0.9.3
 License: MIT
 Author: keyBeatz
+Author URI: https://github.com/keyBeatz
 */
 
 namespace CJM;
@@ -36,10 +37,11 @@ class Plugin extends Settings
 
 		/** Folder paths & urls */
 
-		static::addSetting( "cacheDir", ABSPATH . "wp-content/uploads/css-js-minify/" );
-		static::addSetting( "cacheUrl", site_url( 'wp-content/uploads/css-js-minify/' ) );
+		$uploadDirInfo = wp_upload_dir();
+		static::addSetting( "cacheDir", $uploadDirInfo['basedir'] . "/css-js-minify/" );
+		static::addSetting( "cacheUrl", $uploadDirInfo['baseurl'] . '/css-js-minify/' );
 		static::addSetting( "pluginDir", plugin_dir_path( __FILE__ ) );
-		static::addSetting( "pluginUrl", plugins_url( 'css-js-minify' ) );
+		static::addSetting( "pluginUrl", plugins_url( "css-js-minify" ) );
 		static::addSetting( "libsDir", static::getSetting( "pluginDir" ) . "libs/" );
 
 		/** Minify settings */
@@ -113,4 +115,4 @@ class Plugin extends Settings
 add_action( 'plugins_loaded', array( __NAMESPACE__ . '\Plugin', 'init' ) );
 add_action( 'plugins_loaded', array( __NAMESPACE__ . '\Plugin', 'loadTextdomain' ) );
 
-register_activation_hook( __FILE__, array( 'CJM\Plugin', 'install' ) );
+register_activation_hook( __FILE__, array( __NAMESPACE__ . '\Plugin', 'install' ) );

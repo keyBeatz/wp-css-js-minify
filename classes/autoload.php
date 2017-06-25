@@ -17,7 +17,7 @@ $cls = str_replace( __NAMESPACE__, '', $cls );
 if( empty( $cls ) )
 return;
 
-$path = ABSPATH . "wp-content/plugins/css-js-minify/classes" . str_replace( '\\', DIRECTORY_SEPARATOR, $cls ) . '.php';
+$path = plugin_dir_path( __FILE__ ) . str_replace( '\\', DIRECTORY_SEPARATOR, $cls ) . '.php';
 require_once( $path );
 }
 spl_autoload_register( __NAMESPACE__ . '\\autoload' );
