@@ -16,6 +16,8 @@ defined( 'ABSPATH' ) || exit();
 
 require_once 'classes/autoload.php';
 
+$pluginName = plugin_basename( __FILE__ );
+
 class Plugin extends Settings
 {
 
@@ -111,8 +113,14 @@ class Plugin extends Settings
 				trigger_error( "The {$pluginFolder} folder could not be created, please create it manually with 777 chmod.", E_USER_ERROR );
 		}
 	}
+
+	public static function addPluginPageLinks( $links ) {
+		$settings_link = '<a href="options-general.php?page=css-js-minify-settings">' . esc_html__( 'Settings' ) . '</a>';
+		array_push( $links, $settings_link );
+		return $links;
+	}
 }
 add_action( 'plugins_loaded', array( __NAMESPACE__ . '\Plugin', 'init' ) );
 add_action( 'plugins_loaded', array( __NAMESPACE__ . '\Plugin', 'loadTextdomain' ) );
-
+add_filter( "plugin_action_links_$pluginName", array( __NAMESPACE__ . '\Plugin', 'addPluginPageLinks' ) );
 register_activation_hook( __FILE__, array( __NAMESPACE__ . '\Plugin', 'install' ) );
