@@ -514,7 +514,7 @@ class Minify extends AdminBase
 						<?php esc_html_e( "First red block is the init base block. It contains all registered styles/script files, which can be sorted from here to your custom defined blocks.", 'css-js-minify' ); ?>
                     </p>
                     <p>
-						<?php esc_html_e( "Boxes in the red block are not loaded (when the minification switch is turned on) and their default order is based on their original loading priorities in WordPress.", 'css-js-minify' ); ?>
+						<?php esc_html_e( "Boxes in the red block are still loaded (when the minification switch is turned on) and their default order is based on their original loading priorities in WordPress.", 'css-js-minify' ); ?>
                     </p>
                     <p>
 						<?php esc_html_e( "Every custom block (grey coloured) can contain an infinite number of boxes.", 'css-js-minify' ); ?>

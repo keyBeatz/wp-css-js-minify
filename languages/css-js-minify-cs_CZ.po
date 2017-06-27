@@ -1,180 +1,185 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2017-06-27 10:28+0200\n"
-"PO-Revision-Date: 2017-06-27 10:28+0200\n"
+"POT-Creation-Date: 2017-06-27 10:30+0200\n"
+"PO-Revision-Date: 2017-06-27 10:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: en\n"
+"Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.12\n"
 "X-Poedit-Basepath: ../classes\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e;esc_attr__;esc_attr_e\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: Admin/AdminBase.php:44
 msgid "Error, minified files could not be generated. Please try again."
-msgstr ""
+msgstr "Chyba, soubory se nepovedlo vygenerovat, zkuste to prosím znovu."
 
 #: Admin/AdminBase.php:45
 msgid ""
 "You probably trying to delete all blocks. To achieve this please use button "
 "Delete All."
 msgstr ""
+"Patrně se snažíte vše smazat, k tomu prosím použijte tlačítko smazat vše."
 
 #: Admin/AdminBase.php:46
 msgid "Successfully deleted."
-msgstr ""
+msgstr "Data byla úspěšně smazána."
 
 #: Admin/AdminBase.php:47
 msgid "Successfully saved."
-msgstr ""
+msgstr "Úspěšně uloženo"
 
 #: Admin/AdminBase.php:48
 msgid "Do you really want to generate new files? The old ones will be deleted."
 msgstr ""
+"Chcete opravdu uložit tyto bloky a vygenerovat nové soubory? Staré budou "
+"tímto smazány nebo přepsány."
 
 #: Admin/AdminBase.php:49
 msgid "Do you really want to delete this block?"
-msgstr ""
+msgstr "Chcete opravdu smazat tento blok?"
 
 #: Admin/AdminBase.php:50
 msgid "Do you really want to delete all blocks?"
-msgstr ""
+msgstr "Chcete opravdu smazat všechny bloky?"
 
 #: Admin/Minify.php:35
 msgid "CSS & JS minify & concat settings"
-msgstr ""
+msgstr "CSS & JS minifikátor - nastavení"
 
 #: Admin/Minify.php:141
 msgid "Move file block left"
-msgstr ""
+msgstr "Posunout blok doleva"
 
 #: Admin/Minify.php:146
 msgid "Move file block right"
-msgstr ""
+msgstr "Posunout blok doprava"
 
 #: Admin/Minify.php:153
 msgid "Show file block settings"
-msgstr ""
+msgstr "Zobrazit nastavení bloku"
 
 #: Admin/Minify.php:158
 msgid "Remove file block"
-msgstr ""
+msgstr "Smazat blok"
 
 #: Admin/Minify.php:202
 msgid "Hide settings"
-msgstr ""
+msgstr "Schovat nastavení"
 
 #: Admin/Minify.php:211
 msgid "Media"
-msgstr ""
+msgstr "Media"
 
 #: Admin/Minify.php:222 Admin/Minify.php:235
 msgid "Load asynchronously"
-msgstr ""
+msgstr "Načíst asynchronně"
 
 #: Admin/Minify.php:226 Admin/Minify.php:247
 msgid "Priority"
-msgstr ""
+msgstr "Priorita"
 
 #: Admin/Minify.php:231 Admin/Minify.php:305 Admin/Minify.php:310
 msgid "In footer"
-msgstr ""
+msgstr "V patičce"
 
 #: Admin/Minify.php:240
 msgid "Default"
-msgstr ""
+msgstr "Default"
 
 #: Admin/Minify.php:320
 msgid "Url"
-msgstr ""
+msgstr "Url"
 
 #: Admin/Minify.php:325
 msgid "Dependencies"
-msgstr ""
+msgstr "Závislosti"
 
 #: Admin/Minify.php:343
 msgid "Move file boxes here"
-msgstr ""
+msgstr "Přesuňte bloky sem"
 
 #: Admin/Minify.php:346
 msgid "You need to load the existing files first, please visit"
-msgstr ""
+msgstr "První se musí načíst existující soubory, prosím navštivte znovu "
 
 #: Admin/Minify.php:347
 msgid "your webpage"
-msgstr ""
+msgstr "svůj web"
 
 #: Admin/Minify.php:349
 msgid "All boxes have been already assigned."
-msgstr ""
+msgstr "Všechny boxy byly rozděleny"
 
 #: Admin/Minify.php:368
 msgid "Generate files"
-msgstr ""
+msgstr "Vygenerovat soubory"
 
 #: Admin/Minify.php:373 Admin/Minify.php:486
 msgid "Erase all files"
-msgstr ""
+msgstr "Zrušit všechny soubory"
 
 #: Admin/Minify.php:378
 msgid "Show guidance"
-msgstr ""
+msgstr "Zobrazit nápovědu"
 
 #: Admin/Minify.php:397
 #, php-format
 msgid "Turn on/off %s"
-msgstr ""
+msgstr "Zapnout/vypnout %s"
 
 #: Admin/Minify.php:412
 msgid "Click to add a new file block"
-msgstr ""
+msgstr "Klikněte pro přidání nového bloku (souboru)"
 
 #: Admin/Minify.php:414
 msgid "Add a file block"
-msgstr ""
+msgstr "Přidejte blok (soubor)"
 
 #: Admin/Minify.php:422
 msgid "CSS & JS Minify - guide"
-msgstr ""
+msgstr "CSS & JS Minify - nápověda"
 
 #: Admin/Minify.php:426
 msgid "Introduction"
-msgstr ""
+msgstr "Úvod"
 
 #: Admin/Minify.php:427
 msgid "Tabs"
-msgstr ""
+msgstr "Záložky"
 
 #: Admin/Minify.php:428
 msgid "Buttons"
-msgstr ""
+msgstr "Tlačítka"
 
 #: Admin/Minify.php:429
 msgid "Blocks"
-msgstr ""
+msgstr "Bloky"
 
 #: Admin/Minify.php:430
 msgid "Boxes"
-msgstr ""
+msgstr "Boxy"
 
 #: Admin/Minify.php:431
 msgid "Debug"
-msgstr ""
+msgstr "Debug"
 
 #: Admin/Minify.php:440
 msgid "Welcome to our community plugin guide."
-msgstr ""
+msgstr "Vítejte v nápovědě našeho komunitního pluginu."
 
 #: Admin/Minify.php:441
 msgid ""
 "This guide will walk you through functions, features and terms used in this "
 "plugin."
 msgstr ""
+"V tomto návodě se dozvíte vše potřebné ohledně funkcí a možností tohoto "
+"pluginu."
 
 #: Admin/Minify.php:444
 msgid ""
@@ -182,76 +187,87 @@ msgid ""
 "minifying and concatenating of your existing CSS & JS files among all "
 "existing possibilities (other plugins)."
 msgstr ""
+"Věřím, že nabízíme nejvíce uživatelsky přívětivou cestu definování vlastních "
+"minifikovaných souborů z pohodlí administrace WordPress."
 
 #: Admin/Minify.php:447
 msgid ""
 "However, if you encounter any bugs, fell free to send a report to the author "
 "- you can find contact information on GitHub or on the WordPress plugin page."
 msgstr ""
+"Avšak pokud narazíte na nějaké chyby, kontaktuje mě prosím s reportem - "
+"kontaktní informace naleznete na stránce pluginu."
 
 #: Admin/Minify.php:457
 msgid ""
 "Each tab stands for a separate section - every section is set independently "
 "of others."
 msgstr ""
+"Záložky slouží pro oddělení jednotlivých sekcí, z níchž každá se nastavuje "
+"zvlášť."
 
 #: Admin/Minify.php:461
 msgid "CSS"
-msgstr ""
+msgstr "CSS"
 
 #: Admin/Minify.php:462
 msgid ""
 "providing minification & concatenation options and settings for your "
 "registered cascading styles."
-msgstr ""
+msgstr "slouží pro sestavovaní minifikovaných souborů pro styly"
 
 #: Admin/Minify.php:465
 msgid "JS"
-msgstr ""
+msgstr "JS"
 
 #: Admin/Minify.php:466
 msgid ""
 "providing minification & concatenation options and settings for your "
 "registered javascript files."
-msgstr ""
+msgstr "slouží pro sestavovaní minifikovaných souborů pro skripty"
 
 #: Admin/Minify.php:478
 msgid "Each button represents a certain action over the tab."
 msgstr ""
+"Tlačítka reprezentují vždy určité akce, které se vážou buďto k dané záložce."
 
 #: Admin/Minify.php:482
 msgid "Save"
-msgstr ""
+msgstr "Uložit"
 
 #: Admin/Minify.php:483
 msgid ""
 "will generate minified files sorted by block positions and positions of "
 "their boxes."
-msgstr ""
+msgstr "vygeneruje minifikované soubory dle naskládaných bloků a jejich boxů"
 
 #: Admin/Minify.php:487
 msgid ""
 "will erase all existing blocks within the current tab. You also need to "
 "click the 'Save' button to make the effect permanent"
 msgstr ""
+"smaže všechny bloky dané záložky, ale pro trvalý efekt je třeba ještě uložit"
 
 #: Admin/Minify.php:490
 msgid "Help"
-msgstr ""
+msgstr "Nápověda"
 
 #: Admin/Minify.php:491
 msgid "will show this guide."
-msgstr ""
+msgstr "zobrazí tuto nápovědu"
 
 #: Admin/Minify.php:494
 msgid "Switch (on/off)"
-msgstr ""
+msgstr "Přepínač vypnuto/zapnuto"
 
 #: Admin/Minify.php:495
 msgid ""
 "is placed at the top right corner and is used to turn loading of the "
 "minified files on and off (always set separately for each tab)."
 msgstr ""
+"je umístěný úplně vpravo v hlavičce záložky a slouží pro vypnutí a zapnutí "
+"minifikátoru (vždy pro záložku zvlášť, takže lze mít zaplé css zatímco js je "
+"vyplé)"
 
 #: Admin/Minify.php:498
 msgid ""
@@ -259,16 +275,22 @@ msgid ""
 "loading - if you need to load new files (eg. if you installed new plugin) "
 "you must turn off this switch first."
 msgstr ""
+"Poznámka: když máte tento přepínač zapnutý, logování (načítání) nových "
+"souborů bude vypnuto - pokud potřebujete načíst nové soubory (např. pokud "
+"nainstalujete nový plugin a ten přidá css/js), musíte první tento přepínač "
+"vypnout"
 
 #: Admin/Minify.php:511
 msgid "Each block represents one minified file."
-msgstr ""
+msgstr "Blok reprezentuje jeden soubor."
 
 #: Admin/Minify.php:514
 msgid ""
 "First red block is the init base block. It contains all registered styles/"
 "script files, which can be sorted from here to your custom defined blocks."
 msgstr ""
+"První blok (červený), obsahuje výchozí registrované styly, které jde volně "
+"rozřazovat do bloků."
 
 #: Admin/Minify.php:517
 msgid ""
@@ -276,26 +298,28 @@ msgid ""
 "turned on) and their default order is based on their original loading "
 "priorities in WordPress."
 msgstr ""
+"Boxy v červeném bloku se načítají jako obvykle (když je přepínač pro záložku "
+"zapnutý) a jsou seřazeny dle svých originální priorit ve WordPress."
 
 #: Admin/Minify.php:520
 msgid ""
 "Every custom block (grey coloured) can contain an infinite number of boxes."
-msgstr ""
+msgstr "Každý (šedý) blok může obsahovat libovolný počet boxů."
 
 #: Admin/Minify.php:523
 msgid ""
 "The order of blocks matters. Position of a block defines loading priority "
 "(by default) - higher priority on the left. However, you can override "
 "priorities in block settings."
-msgstr ""
+msgstr "Na pořadí bloků záleží, jelikož určují prioritu načítání (lze měnit)."
 
 #: Admin/Minify.php:526
 msgid "Block buttons have these functions"
-msgstr ""
+msgstr "Tlačítka bloků mají tyto funkce"
 
 #: Admin/Minify.php:530
 msgid "Arrow left/right"
-msgstr ""
+msgstr "Šipka vlevo/vpravo"
 
 #: Admin/Minify.php:531
 msgid ""
@@ -303,10 +327,12 @@ msgid ""
 "priorities - the leftmost block has the highest priority, you can however "
 "change priority manually in block settings."
 msgstr ""
+"posouvání bloku určeným směrem, takto můžete vybírat prioritu načítání "
+"(první blok vlevo se bude načítat jako první)"
 
 #: Admin/Minify.php:534
 msgid "Gear"
-msgstr ""
+msgstr "Ozubené kolo"
 
 #: Admin/Minify.php:535
 msgid ""
@@ -315,80 +341,96 @@ msgid ""
 "included in the header or in the footer. You can set asynchronous or "
 "deferred loading for both CSS and JS."
 msgstr ""
+"nastavení pro daný blok (většinou se nastavují atributy, pro CSS media a pro "
+"JS např. to, jestli se má blok načítat v patičce nebo v hlavičce dokumentu)"
 
 #: Admin/Minify.php:538
 msgid "Basket"
-msgstr ""
+msgstr "Koš"
 
 #: Admin/Minify.php:539
 msgid ""
 "will delete the block. You also need to save everything with the 'Save' "
 "button to make changes permanent."
-msgstr ""
+msgstr "smaže blok (pro úplné smazání je třeba uložit)"
 
 #: Admin/Minify.php:549
 msgid "One box represents one file loaded by WordPress."
-msgstr ""
+msgstr "Box reprezentuje jeden soubor, který byl načtený WordPressem."
 
 #: Admin/Minify.php:552
 msgid ""
 "In the initial state all boxes are placed in the red block (init base block) "
 "in deactivated state and sorted by their default loading priorities."
 msgstr ""
+"Ve výchozím stavu jsou načteny všechny vlevo v oranžovém boxu, kde jsou "
+"\"deaktivované\" pro minifikátor a načítají se dle svého původního nastavení."
 
 #: Admin/Minify.php:553
 msgid ""
 "If plugin minification is enabled (switch is turned on) boxes placed in red "
 "init box will be loaded by WordPress as usual."
 msgstr ""
+"Pokud je minifikace zaplá (přepínač je zelený) boxy umístěné v červeném "
+"bloku se budou načítat jako obvykle."
 
 #: Admin/Minify.php:556
 msgid ""
 "Notice a little grey number in the top left corner - it holds the original "
 "priority order - e.g. 3 was loaded before 5."
 msgstr ""
+"Všimněte si šedého čísla v levém horním rohu -  značí originální pozici dle "
+"WordPress načítání a priorit (př. 3 byla originálně načtena před 5)"
 
 #: Admin/Minify.php:557
 msgid ""
 "You should always take this number as a guide and order boxes in your custom "
 "blocks by it."
-msgstr ""
+msgstr "Vždy by jste měli brát tyto čísla v potaz a řadit boxy dle nich."
 
 #: Admin/Minify.php:560
 msgid ""
 "Under the priority number, there are a couple of labels helping you to "
 "decide where should the box be placed."
 msgstr ""
+"Pod číslem priority naleznete několik štítků, které vám pomohou s "
+"rozhodováním v jakém pořadí by měly být boxy seřazeny"
 
 #: Admin/Minify.php:561
 msgid "Grey label stands for the file version and is not that important."
-msgstr ""
+msgstr "Šedý štítek pak znamená verzi souboru."
 
 #: Admin/Minify.php:562
 msgid "Hint"
-msgstr ""
+msgstr "Nápověda"
 
 #: Admin/Minify.php:563
 msgid ""
 "CSS with the same media (green) label and JS with 'in footer' (red) label "
 "should always be together - in most cases."
 msgstr ""
+"CSS se stejným media štítkem (zelený) a JS se štítkem 'in "
+"footer' (červený)\" by měly být vě většině případů spolu v jednom bloku."
 
 #: Admin/Minify.php:566
 msgid ""
 "On the right you can find an arrow, which will show additional data like url "
 "path."
 msgstr ""
+"V právé části můžete najít šipku, který zobrazí další užitečná data, jako "
+"url nebo závislosti."
 
 #: Admin/Minify.php:569
 msgid "Important"
-msgstr ""
+msgstr "Důležite"
 
 #: Admin/Minify.php:570
 msgid ""
 "Positions of boxes within their block will determine the priority of that "
 "same file upon concatenation."
 msgstr ""
+"Pozice boxů v rámci bloku určují prioritu toho v jakém pořadí se soubory "
+"spojí ve výsledném souboru"
 
 #: Admin/Minify.php:571
 msgid ""
@@ -396,25 +438,42 @@ msgid ""
 "upon the box positioning - because files that were loaded earlier may be "
 "(and often are) overridden by files that are loaded later."
 msgstr ""
+"Vždy se rozhodujte podle čísla priority (v levém horním rohu), protože "
+"soubory, které byly načteny dříve často bývají přepsány těmi co se načítají "
+"později."
 
 #: Admin/Minify.php:580
 msgid ""
 "We are working on debugging tools to provide you easy and friendly way of "
 "selecting right order of files (boxes & blocks)."
 msgstr ""
+"Pracujeme na debugovacích nástrojích aby jsme vám poskytli jetště lepší "
+"uživatelský zážitek."
 
 #: Admin/Minify.php:583
 msgid ""
 "Meanwhile (for JS) I recommend to use your browser console - if there are no "
 "errors, everything is ok."
 msgstr ""
+"Mezi tím (pro JS) doporučuji použít konzoli v prohlížeči - pokud tam nebudou "
+"žádne errory, mělo by být všechno v pořádku."
 
 #: Admin/Minify.php:586
 msgid "For CSS you should check site if everything is displaying as it should."
-msgstr ""
+msgstr "S CSS soubory vždy zkontrolujte, jestli se vše zobrazuje jak má."
 
 #: Admin/Minify.php:589
 msgid ""
 "Please read through this guide first then you should have no problem with "
 "setting the right order of files."
 msgstr ""
+"Prosím pročtěte si tuto nápovědu a pak by neměl být problém nastavit správné "
+"pořadí všech souborů."
+
+#~ msgid ""
+#~ "Boxes in the red block are not loaded (when the minification switch is "
+#~ "turned on) and their default order is based on their original loading "
+#~ "priorities in WordPress."
+#~ msgstr ""
+#~ "Boxy v červeném bloku jsou načteny dle svého původního nastavení a "
+#~ "nevystupují nijak v minifikátoru."
